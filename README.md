@@ -2630,6 +2630,8 @@ smb: \> mget *
 - [Escaping the PyJail](https://lbarman.ch/blog/pyjail/)
 - [wanqizhu/pyfuck](https://github.com/wanqizhu/pyfuck)
 - [各种姿势解析-python沙箱逃逸_python的沙箱逃-CSDN博客](https://blog.csdn.net/qq_43390703/article/details/106231154)
+- [Pyjail Cheatsheet](https://shirajuki.js.org/blog/pyjail-cheatsheet)
+- [the pepsi place \| Albatross: Breaking out of pyjail with your hands tied.](https://blog.pepsipu.com/posts/albatross-redpwnctf)
 
 CTF Challenge
 
