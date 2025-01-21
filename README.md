@@ -893,6 +893,7 @@ Prototype Pollution to RCE (PP2R)
 - [WeChall](https://www.wechall.net/)
 - [Webhacking.kr](https://webhacking.kr/)
 - [AlpacaHack](https://alpacahack.com/)
+- [Dreamhack](https://dreamhack.io/)
 
 ### Getting Started / Tutorials
 
@@ -2949,6 +2950,8 @@ File Content Disclosure vulnerability
 ### Common Lisp
 
 - [awesome-cl](https://github.com/CodyReichert/awesome-cl) - A curated list of awesome Common Lisp frameworks, libraries and other shiny stuff.
+- [A Road to Common Lisp / Steve Losh](https://stevelosh.com/blog/2018/08/a-road-to-common-lisp/)
+  - Translation: [A Road to Common Lisp 翻訳](https://gist.github.com/y2q-actionman/49d7587912b2786eb68643afde6ca192) - A Road to Common Lisp 翻訳. GitHub Gist: instantly share code, notes, and snippets.
 
 ### C++
 
