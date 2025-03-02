@@ -2030,6 +2030,18 @@ CREATE TABLE tbl1 (
 - [Finding an unseen SQL Injection by bypassing escape functions in mysqljs/mysql - Flatt Security Research](https://flatt.tech/research/posts/finding-an-unseen-sql-injection-by-bypassing-escape-functions-in-mysqljs-mysql/)
 - [CTF-Write-ups/Google CTF/Web/Log-Me-In](https://github.com/csivitu/CTF-Write-ups/tree/master/Google%20CTF/Web/Log-Me-In)
 
+psql client
+
+```text
+# connect to databse
+psql postgresql://webapp:7UxWFfLpsu4rJA94@127.0.0.1:5432/answers
+
+# https://stackoverflow.com/questions/11180179/postgresql-disable-more-output
+\pset pager off
+
+\x
+```
+
 #### Install Oracle SQL*Plus DB client
 
 <https://book.hacktricks.xyz/network-services-pentesting/1521-1522-1529-pentesting-oracle-listener/oracle-pentesting-requirements-installation>
