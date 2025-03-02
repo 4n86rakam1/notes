@@ -81,6 +81,7 @@
   - [Uncategorized](#uncategorized)
   - [Android](#android)
   - [dotnet dnSpy](#dotnet-dnspy)
+  - [ysoserial.net in Kali](#ysoserialnet-in-kali)
 - [Web](#web)
   - [Specification](#specification)
   - [Vulnerability research approach](#vulnerability-research-approach)
@@ -1760,6 +1761,18 @@ The SHA1withRSA algorithm specified for the -sigalg option is considered a secur
 rm -fr ~/.wine
 winetricks dotnet6
 wine ~/tools/dnSpy/dnSpy.exe
+```
+
+### ysoserial.net in Kali
+
+- [Mono Package for Wine is not installed - Ask Ubuntu](https://askubuntu.com/questions/841847/mono-package-for-wine-is-not-installed)
+
+```console
+$ wine uninstaller --list
+{9d3fc73f-1cf4-412c-a1c9-d2ad28ccbd62}|||Microsoft .NET Runtime - 6.0.36 (x64)
+{8c97cb9f-5366-4851-942a-4da7d5980ee8}|||Microsoft .NET Runtime - 6.0.36 (x86)
+{F63B90D5-B273-582F-8DF1-1A1351F6AEBE}|||Wine Mono Runtime
+{D26F6A69-D276-54AE-9328-B751F48EE85E}|||Wine Mono Windows Support
 ```
 
 ## Web
