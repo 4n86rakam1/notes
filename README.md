@@ -128,7 +128,6 @@
   - [Other](#other-3)
 - [Code Analysis](#code-analysis)
   - [Static Code Analysis](#static-code-analysis)
-- [Cheat Sheets](#cheat-sheets)
 - [Linux](#linux)
   - [Bash snippet](#bash-snippet)
   - [Kali Linux](#kali-linux)
@@ -2521,10 +2520,6 @@ Papers
 - [security - Dynamic Analysis of PHP Web Applications to identify work flow deviations - Stack Overflow](https://stackoverflow.com/questions/9275231/dynamic-analysis-of-php-web-applications-to-identify-work-flow-deviations)
 - [Static and Dynamic Analysis for PHP Security](https://s3.us.cloud-object-storage.appdomain.cloud/res-files/28-php.NYPHP_final.pdf)
 
-## Cheat Sheets
-
-- [The Ultimate List of SANS Cheat Sheets \| SANS Institute](https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/)
-
 ## Linux
 
 - [Linux Security Expert](https://linuxsecurity.expert/)
@@ -3253,7 +3248,7 @@ c7aae64a82d56171225c64892a291366  nc110/data/data.c
 
 - [index - hacking](https://new.reddit.com/r/hacking/wiki/index/)
 - [onlurking/awesome-infosec](https://github.com/onlurking/awesome-infosec)
-- [CWE - Common Weakness Enumeration](https://cwe.mitre.org/index.html)
+- [The Ultimate List of SANS Cheat Sheets \| SANS Institute](https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/)
 - [Home \| Zero Day Initiative](https://www.zerodayinitiative.com/)
 - [How To Become A Hacker: Japanese](https://cruel.org/freeware/hacker.html)
 - [Emulator 101 - Welcome](http://www.emulator101.com/)
