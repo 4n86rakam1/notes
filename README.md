@@ -3479,6 +3479,7 @@ c7aae64a82d56171225c64892a291366  nc110/data/data.c
 - [How To Become A Hacker: Japanese](https://cruel.org/freeware/hacker.html)
 - [Emulator 101 - Welcome](http://www.emulator101.com/)
 - [賢い質問のしかた](https://www.ranvis.com/articles/smart-questions.ja.html)
+- [The New Hacker's Dictionary](https://www.outpost9.com/reference/jargon/jargon_toc.html)
 - [インシデント指揮官トレーニングの手引き | Yakst](https://yakst.com/ja/posts/5588)
 - [セキュリティエンジニアを3年続けて分かったおすすめ勉強法](https://p-0.me/b/p/614/)
 - [政府情報システムにおける 脆弱性診断導入ガイドライン](https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/e2a06143-ed29-4f1d-9c31-0f06fca67afc/3bc45d3c/20220630_resources_standard_guidelines_guidelines_08.pdf)
