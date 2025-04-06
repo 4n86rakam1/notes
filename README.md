@@ -807,6 +807,7 @@ Prototype Pollution to RCE (PP2R)
 - [Server Side Template Injection - Payloads All The Things](https://swisskyrepo.github.io/PayloadsAllTheThings/Server%20Side%20Template%20Injection/)
 - [payloadbox/ssti-payloads](https://github.com/payloadbox/ssti-payloads)
 - [Jinja2 template injection filter bypasses \| Sebastian Neef - 0day.work](https://0day.work/jinja2-template-injection-filter-bypasses/)
+- [websitesVulnerableToSSTI](https://github.com/DiogoMRSilva/websitesVulnerableToSSTI/tree/master)
 
 ### CSRF
 
