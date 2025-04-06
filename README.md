@@ -3054,6 +3054,13 @@ Argument parser example
 
 - [less.php/bin/lessc](https://github.com/wikimedia/less.php/blob/master/bin/lessc)
 
+Phar Deserialization
+
+- [PHP: Backward Incompatible Changes - Manual](https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.phar)
+- [PHP Deserialization - Payloads All The Things](https://swisskyrepo.github.io/PayloadsAllTheThings/Insecure%20Deserialization/PHP/#phar-deserialization)
+- [PHP: Phar - Manual](https://www.php.net/manual/en/book.phar.php#123125)
+- [PHP: rfc:phar_stop_autoloading_metadata](https://wiki.php.net/rfc/phar_stop_autoloading_metadata)
+
 #### Tested environment in Docker Compose
 
 Dockerfile
