@@ -1201,6 +1201,7 @@ ld -m elf_i386 -o shellcode shellcode.o
 - [nasm-assembly-examples/nasm-cheat-sheet.md](https://github.com/funnydman/nasm-assembly-examples/blob/master/nasm-cheat-sheet.md)
 - [NASM-Assembly-Cheat-Sheet/Cheat-Sheet.md](https://github.com/Siedler/NASM-Assembly-Cheat-Sheet/blob/master/Cheat-Sheet.md)
 - [x64 NASM Cheat Sheet](https://gist.github.com/justinian/385c70347db8aca7ba93e87db90fc9a6)
+- [Art of Assembly Language Programming and HLA by Randall Hyde](https://www.plantation-productions.com/Webster/)
 
 ### Disassembly
 
