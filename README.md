@@ -2888,6 +2888,18 @@ smb: \> recurse
 smb: \> mget *
 ```
 
+## Virtualization
+
+### virt-manager
+
+- [Virtual Machine Manager](https://virt-manager.org/)
+
+shortcut
+
+- Change terminal
+  - Alt + left or right cursor
+  - Send Key -> Ctrl+Alt+F1
+
 ## Programming language
 
 ### Python
