@@ -141,6 +141,8 @@
   - [RDP](#rdp)
   - [RDP over SSH](#rdp-over-ssh)
   - [smbclient](#smbclient)
+- [Virtualization](#virtualization)
+  - [virt-manager](#virt-manager)
 - [Programming language](#programming-language)
   - [Python](#python-1)
   - [Lua](#lua)
