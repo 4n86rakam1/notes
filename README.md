@@ -3490,6 +3490,7 @@ c7aae64a82d56171225c64892a291366  nc110/data/data.c
 - [index - hacking](https://new.reddit.com/r/hacking/wiki/index/)
 - [onlurking/awesome-infosec](https://github.com/onlurking/awesome-infosec)
 - [The Ultimate List of SANS Cheat Sheets \| SANS Institute](https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/)
+- [COOLEST CAREERS IN CYBER.pdf](https://assets.contentstack.io/v3/assets/blt36c2e63521272fdc/blt32196a45045f0345/6218bcf5b6471b5f9d4a59a5/Poster_-_Coolest_Careers_-_Japanese[100][50].pdf)
 - [Home \| Zero Day Initiative](https://www.zerodayinitiative.com/)
 - [How To Become A Hacker: Japanese](https://cruel.org/freeware/hacker.html)
 - [Emulator 101 - Welcome](http://www.emulator101.com/)
