@@ -223,13 +223,13 @@
   ```bash
   # Install and Setup
   go install github.com/tomnomnom/gf@latest
-  
+
   git clone https://github.com/tomnomnom/gf.git ~/tools/gf
   cp -r ~/tools/gf/examples/ ~/.gf
-  
+
   # list available pattern
   gf -list
-  
+
   # check pattern
   gf -dump urls
   ```
@@ -2285,7 +2285,7 @@ x509 subcommand
 
 ```bash
 # parse a Certificate
-openssl x509 -in example.com.pem -noout -text 
+openssl x509 -in example.com.pem -noout -text
 
 # output Subject only
 openssl x509 -in example.com.cert -noout -subject
