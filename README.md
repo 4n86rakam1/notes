@@ -686,6 +686,7 @@ net use * \\<ip>\<user>
 - [SecLists](https://github.com/danielmiessler/SecLists) - List types include usernames, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more.
 - [Assetnote Wordlists](https://wordlists.assetnote.io/) - This website provides you with wordlists that are up to date and effective against the most popular technologies on the internet.
 - [crunch](https://sourceforge.net/projects/crunch-wordlist/) - Crunch is a wordlist generator where you can specify a standard character set or a character set you specify. crunch can generate all possible combinations and permutations.
+- [RSMangler](https://github.com/digininja/RSMangler) - RSMangler will take a wordlist and perform various manipulations on it similar to those done by John the Ripper with a few extras.
 - [wordlistctl](https://github.com/BlackArch/wordlistctl) - Fetch, install and search wordlist archives from websites and torrent peers
 - [mentalist](https://github.com/sc0tfree/mentalist) - Mentalist is a graphical tool for custom wordlist generation. It utilizes common human paradigms for constructing passwords and can output the full wordlist as well as rules compatible with Hashcat and John the Ripper
 - [english-words](https://github.com/dwyl/english-words) - A text file containing 479k English words for all your dictionary/word-based projects e.g: auto-completion / autosuggestion
