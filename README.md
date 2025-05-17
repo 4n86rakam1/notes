@@ -3594,6 +3594,7 @@ c7aae64a82d56171225c64892a291366  nc110/data/data.c
 - [インシデント指揮官トレーニングの手引き | Yakst](https://yakst.com/ja/posts/5588)
 - [セキュリティエンジニアを3年続けて分かったおすすめ勉強法](https://p-0.me/b/p/614/)
 - [政府情報システムにおける 脆弱性診断導入ガイドライン](https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/e2a06143-ed29-4f1d-9c31-0f06fca67afc/3bc45d3c/20220630_resources_standard_guidelines_guidelines_08.pdf)
+- [Staff Engineer: Leadership beyond the management track](https://staffeng.com/)
 
 XPS9320 firmware
 
