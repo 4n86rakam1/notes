@@ -26,7 +26,6 @@
   - [CSS Injection](#css-injection)
   - [XS Leaks](#xs-leaks)
   - [DOM Clobbering](#dom-clobbering)
-  - [XS-Leaks](#xs-leaks)
   - [SQL Injection (SQLi)](#sql-injection-sqli)
   - [SSTI](#ssti)
   - [CSRF](#csrf)
@@ -806,10 +805,6 @@ Prototype Pollution to RCE (PP2R)
 - [XSS in GMail's AMP4Email via DOM Clobbering - research.securitum.com](https://research.securitum.com/xss-in-amp4email-dom-clobbering/)
 - [DOM Clobbering strikes back \| PortSwigger Research](https://portswigger.net/research/dom-clobbering-strikes-back)
 - [Hijacking service workers via DOM Clobbering \| PortSwigger Research](https://portswigger.net/research/hijacking-service-workers-via-dom-clobbering)
-
-### XS-Leaks
-
-- [Introduction \| XS-Leaks Wiki](https://xsleaks.dev/)
 
 ### SQL Injection (SQLi)
 
