@@ -2409,15 +2409,32 @@ openssl req -x509 -newkey rsa:4096 -noenc -out cert.pem -keyout key.pem -days 36
 ## Wi-Fi
 
 - [Pentesting Wifi \| HackTricks \| HackTricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/pentesting-wifi)
-- [wiire-a/pixiewps: An offline Wi-Fi Protected Setup brute-force utility](https://github.com/wiire-a/pixiewps)
 - [Wifi Hacking Tutorials](https://www.hackingtutorials.org/category/wifi-hacking-tutorials/)
 - [WPS PIN attacks: How to crack WPS-enabled Wi-Fi networks with Reaver](https://www.hackthebox.com/blog/wps-pin-attacks-and-cracking-wps-with-reaver)
-- [Hack The Box :: Hack The Box](https://app.hackthebox.com/machines/Wifinetic)
 - [Brute forcing Wi-Fi Protected Setup by Stefan Viehböck in 2011](https://sviehb.files.wordpress.com/2011/12/viehboeck_wps.pdf)
+- [About mac80211 — Linux Wireless documentation](https://wireless.docs.kernel.org/en/latest/en/developers/documentation/mac80211.html)
+- [wpa_capture \[Aircrack-ng\]](https://www.aircrack-ng.org/doku.php?id=wpa_capture)
+- [HSC - Articles - Wi-Fi security - WEP, WPA and WPA2](https://web.archive.org/web/20071017122417/http://hsc.fr:80/ressources/articles/hakin9_wifi/index.html.en)
+- [Wi-Fi security - WEP, WPA and WPA](https://web.archive.org/web/20071022160131/http://www.hsc.fr/ressources/articles/hakin9_wifi/hakin9_wifi_EN.pdf)
+- [Home · koutto/pi-pwnbox-rogueap Wiki](https://github.com/koutto/pi-pwnbox-rogueap/wiki)
 
 Tools
 
 - [t6x/reaver-wps-fork-t6x](https://github.com/t6x/reaver-wps-fork-t6x)
+- [wiire-a/pixiewps: An offline Wi-Fi Protected Setup brute-force utility](https://github.com/wiire-a/pixiewps)
+
+Labs
+
+- [WiFiChallenge Lab v2.1](https://lab.wifichallenge.com/)
+- [Best Wi-Fi Adapter for Hacking in 2024 (and How to Configure It) · r4ulcl](https://r4ulcl.com/posts/best-wifi-adapter-for-hacking-in-2024/)
+- [Install TP Link in Ubuntu 20.04 - Home Network Community](https://community.tp-link.com/en/home/forum/topic/208022)
+- [Official Linux Wireless documentation — Linux Wireless documentation](https://wireless.docs.kernel.org/en/latest/)
+- [Hack The Box :: Hack The Box](https://app.hackthebox.com/machines/Wifinetic)
+
+Cheatsheet
+
+- [OSWP PlayBook: (Offensive Security Wireless Professional) - Zeyad Azima](https://zeyadazima.com/notes/oswplaybook/)
+- [OSWP Cheatsheet ⋆ James Li Can Hack](https://0xjamesli.com/oswp-cheatsheet/)
 
 ### Commands
 
