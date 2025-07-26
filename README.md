@@ -159,6 +159,7 @@
   - [Scholarly Articles, Academic Paper](#scholarly-articles-academic-paper)
   - [Video](#video)
   - [Podcast](#podcast)
+- [Security Audit](#security-audit)
 - [Stuff](#stuff)
 
 <!-- tocstop -->
@@ -3802,6 +3803,10 @@ c7aae64a82d56171225c64892a291366  nc110/data/data.c
 ### Podcast
 
 - [Darknet Diaries](https://darknetdiaries.com/)
+
+## Security Audit
+
+- [X41 Audited Ruby on Rails \| X41 D-Sec](https://x41-dsec.de/security/research/job/news/2025/06/11/ruby-on-rails/)
 
 ## Stuff
 
