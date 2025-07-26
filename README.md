@@ -35,6 +35,7 @@
   - [DNS Rebind Attack](#dns-rebind-attack)
   - [SSRF](#ssrf)
   - [RCE](#rce)
+  - [Race Condition](#race-condition)
   - [Information Disclosure](#information-disclosure)
   - [Apache Tomcat](#apache-tomcat)
   - [Curated](#curated)
@@ -865,6 +866,14 @@ Prototype Pollution to RCE (PP2R)
 
 - [CVE-2023-43177](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-43177) - CrushFTP prior to 10.5.1 is vulnerable to Improperly Controlled Modification of Dynamically-Determined Object Attributes
 - [CVE-2023-49297](https://www.cve.org/CVERecord?id=CVE-2023-49297) - Unsafe YAML deserialization in PyDrive2, CLoader
+
+### Race Condition
+
+- [Race Condition - HackTricks](https://book.hacktricks.wiki/en/pentesting-web/race-condition.html)
+- [Race Condition - Payloads All The Things](https://swisskyrepo.github.io/PayloadsAllTheThings/Race%20Condition/)
+- [The single-packet attack: making remote race-conditions 'local' \| PortSwigger Research](https://portswigger.net/research/the-single-packet-attack-making-remote-race-conditions-local)
+- [Smashing the state machine: the true potential of web race conditions \| PortSwigger Research](https://portswigger.net/research/smashing-the-state-machine#single-packet-attack)
+- [A closer look to Single-Packet attack - Dock12 - Sorint.Lab](https://dock12.sorint.com/post/a-closer-look-to-single-packet-attack/)
 
 ### Information Disclosure
 
