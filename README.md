@@ -747,6 +747,7 @@ curl -s http://runner.htb/ | html2text | tr ' ' '\n' | tr -d '.,:*!' | sort -u >
 - [Browser's XSS Filter Bypass Cheat Sheet](https://github.com/masatokinugawa/filterbypass/wiki/Browser's-XSS-Filter-Bypass-Cheat-Sheet)
 - [s0md3v/AwesomeXSS](https://github.com/s0md3v/AwesomeXSS)
 - [traxss](https://github.com/M4cs/traxss)
+- [GMSGadget](https://gmsgadget.com/)
 
 Refrected XSS checker
 
