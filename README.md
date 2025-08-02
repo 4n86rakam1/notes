@@ -875,6 +875,14 @@ Prototype Pollution to RCE (PP2R)
 - [Smashing the state machine: the true potential of web race conditions \| PortSwigger Research](https://portswigger.net/research/smashing-the-state-machine#single-packet-attack)
 - [A closer look to Single-Packet attack - Dock12 - Sorint.Lab](https://dock12.sorint.com/post/a-closer-look-to-single-packet-attack/)
 
+#### Tools
+
+- [turbo-intruder](https://github.com/PortSwigger/turbo-intruder)
+- [Raceocat](https://github.com/JavanXD/Raceocat)
+- [h2spacex](https://github.com/nxenon/h2spacex)
+- [requests-racer](https://github.com/nccgroup/requests-racer)
+- [race-the-web](https://github.com/TheHackerDev/race-the-web)
+
 ### Information Disclosure
 
 - [Sybil-Scan/imagemagick-lfi-poc: ImageMagick LFI PoC \[CVE-2022-44268\]](https://github.com/Sybil-Scan/imagemagick-lfi-poc) - CVE-2022-44268 ImageMagick 7.1.0-49 Arbitrary File Read
