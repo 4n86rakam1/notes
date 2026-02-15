@@ -3825,6 +3825,9 @@ c7aae64a82d56171225c64892a291366  nc110/data/data.c
 ## Security Audit
 
 - [X41 Audited Ruby on Rails \| X41 D-Sec](https://x41-dsec.de/security/research/job/news/2025/06/11/ruby-on-rails/)
+- Cilium
+  - [Cilium Security Audit 2022](https://docs.cilium.io/en/stable/_downloads/9615617f6682a506cb8e18b1033218e3/CiliumSecurityAudit2022.pdf)
+  - [Cilium Fuzzing Audit 2022](https://docs.cilium.io/en/stable/_downloads/1bca8c3d8bb912f689017e7092afe682/CiliumFuzzingAudit2022.pdf)
 
 ## Stuff
 
